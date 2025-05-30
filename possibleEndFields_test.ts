@@ -1,29 +1,7 @@
 import { assertEquals } from "@std/assert";
-import type {
-  Coords,
-  Board,
-  Color,
-  Size,
-  Orientation,
-  CaptureScore,
-} from "./types.ts";
-import { makeEmptyBoard } from "./makeEmptyBoard.ts";
+import type { Coords, CaptureScore } from "./types.ts";
+import { makeEmptyBoard, placePyramid } from "./board.ts";
 import { possibleEndFields } from "./possibleEndFields.ts";
-
-function placePyramid(
-  board: Board,
-  [x, y]: Coords,
-  color: Color,
-  size: Size,
-  orientation: Orientation
-) {
-  board[x][y] = { color, size, orientation };
-  return board;
-}
-
-////////////////
-// possibleEndFields
-////////////////
 
 Deno.test("move N direction", () => {
   const board = makeEmptyBoard();

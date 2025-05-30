@@ -17,7 +17,7 @@ export type {
 
 // Re-export all functions
 export { isPyramid } from "./types.ts";
-export { makeEmptyBoard } from "./makeEmptyBoard.ts";
+export { makeEmptyBoard, placePyramid } from "./board.ts";
 export { makeMove } from "./makeMove.ts";
 export { validateMove } from "./validateMove.ts";
 export { possibleEndFields } from "./possibleEndFields.ts";
