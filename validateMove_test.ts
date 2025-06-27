@@ -34,6 +34,19 @@ Deno.test("valid move in N direction", () => {
   });
 });
 
+Deno.test("valid reorientation in place", () => {
+  const board = makeEmptyBoard();
+  placePyramid(board, [4, 4], "red", 2, "UP");
+  const state = createInitialState(board);
+
+  // Should not throw for valid move
+  validateMove(state, {
+    start: [4, 4],
+    end: [4, 4],
+    orientation: "N",
+  });
+});
+
 Deno.test("valid capture move", () => {
   const board = makeEmptyBoard();
   placePyramid(board, [4, 4], "red", 2, "N");

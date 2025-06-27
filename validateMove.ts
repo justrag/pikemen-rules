@@ -91,6 +91,11 @@ export const validateMove = (state: State, move: Move): void => {
     throw new Error(`Null moves are illegal`);
   }
 
+  if (startX === endX && startY === endY) {
+    // Reorientation in place
+    return;
+  }
+
   if (!matchesDirection(start, end, startField.orientation)) {
     throw new Error(
       `${currentPlayer}'s ${startField.size} (oriented ${startField.orientation}) cannot move from (${startX},${startY}) to (${endX},${endY})`
