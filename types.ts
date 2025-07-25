@@ -1,5 +1,5 @@
 export type Coord = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
-export type Coords = [Coord, Coord];
+export type Coords = [column: Coord, row: Coord];
 export type Color = "red" | "blue";
 export type Size = 1 | 2 | 3;
 export type Orientation =
@@ -29,6 +29,24 @@ export const isPyramid = (field: Field): field is Pyramid =>
   "color" in field && "size" in field && "orientation" in field;
 
 export type Row = [Field, Field, Field, Field, Field, Field, Field, Field];
+
+/**
+[0][0] is bottom-left
+[0][7] is top-left
+[7][0] is bottom-right
+[7][7] is top-right
+
+   Row 7: | ........ |
+   Row 6: | ........ |
+   Row 5: | ........ |
+   Row 4: | ........ |
+   Row 3: | ........ |
+   Row 2: | ........ |
+   Row 1: | ........ |
+   Row 0: | ........ |
+          ----------
+   Cols:    01234567
+*/
 export type Board = [Row, Row, Row, Row, Row, Row, Row, Row];
 
 export interface Move {
@@ -46,7 +64,15 @@ export interface State {
   board: Board;
 }
 
-export const orientationToCoords: Record<Orientation, [number, number]> = {
+export const orientationToCoords: Record<
+  Orientation,
+  [columnDelta: 0 | 1 | -1, rowDelta: 0 | 1 | -1]
+> = {
+  /**
+  NW | N  | NE 
+  W  | UP | E 
+  SW | S  | SE 
+  */
   N: [0, 1],
   NE: [1, 1],
   E: [1, 0],

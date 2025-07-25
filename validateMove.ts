@@ -22,7 +22,7 @@ const matchesDirection = (
   const diffX = endX - startX;
   const diffY = endY - startY;
 
-  if (diffX !== 0 && diffY !== 0 && diffX !== diffY) {
+  if (diffX !== 0 && diffY !== 0 && Math.abs(diffX) !== Math.abs(diffY)) {
     // not a 1:1 diagonal
     return false;
   }

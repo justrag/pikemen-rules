@@ -30,7 +30,91 @@ Deno.test("valid move in N direction", () => {
   validateMove(state, {
     start: [4, 4],
     end: [4, 6],
-    orientation: "N",
+    orientation: "UP",
+  });
+});
+
+Deno.test("valid move in NE direction", () => {
+  const board = makeEmptyBoard();
+  placePyramid(board, [2, 4], "red", 2, "NE");
+  const state = createInitialState(board);
+
+  validateMove(state, {
+    start: [2, 4],
+    end: [3, 5],
+    orientation: "UP",
+  });
+});
+
+Deno.test("valid move in E direction", () => {
+  const board = makeEmptyBoard();
+  placePyramid(board, [4, 4], "red", 2, "E");
+  const state = createInitialState(board);
+
+  validateMove(state, {
+    start: [4, 4],
+    end: [5, 4],
+    orientation: "UP",
+  });
+});
+
+Deno.test("valid move in SE direction", () => {
+  const board = makeEmptyBoard();
+  placePyramid(board, [4, 4], "red", 2, "SE");
+  const state = createInitialState(board);
+
+  validateMove(state, {
+    start: [4, 4],
+    end: [5, 3],
+    orientation: "UP",
+  });
+});
+
+Deno.test("valid move in S direction", () => {
+  const board = makeEmptyBoard();
+  placePyramid(board, [4, 4], "red", 2, "S");
+  const state = createInitialState(board);
+
+  validateMove(state, {
+    start: [4, 4],
+    end: [4, 3],
+    orientation: "UP",
+  });
+});
+
+Deno.test("valid move in SW direction", () => {
+  const board = makeEmptyBoard();
+  placePyramid(board, [5, 2], "red", 2, "SW");
+  const state = createInitialState(board);
+
+  validateMove(state, {
+    start: [5, 2],
+    end: [4, 1],
+    orientation: "UP",
+  });
+});
+
+Deno.test("valid move in W direction", () => {
+  const board = makeEmptyBoard();
+  placePyramid(board, [4, 4], "red", 2, "W");
+  const state = createInitialState(board);
+
+  validateMove(state, {
+    start: [4, 4],
+    end: [3, 4],
+    orientation: "UP",
+  });
+});
+
+Deno.test("valid move in NW direction", () => {
+  const board = makeEmptyBoard();
+  placePyramid(board, [4, 4], "red", 2, "NW");
+  const state = createInitialState(board);
+
+  validateMove(state, {
+    start: [4, 4],
+    end: [3, 5],
+    orientation: "UP",
   });
 });
 

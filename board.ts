@@ -18,98 +18,108 @@ export const makeEmptyBoard = (): Board =>
 /**
  * Initialize a new board with the standard 2p starting position
  * Blue pieces in top-left, red pieces in bottom-right
+ * Row 7: | 33321... |
+ * Row 6: | 3221.... |
+ * Row 5: | 321..... |
+ * Row 4: | 21.....1 |
+ * Row 3: | 1.....12 |
+ * Row 2: | .....123 |
+ * Row 1: | ....1223 |
+ * Row 0: | ...12333 |
+ *        ----------
+ * Cols:    01234567
  */
 export function initBoard(): Board {
   return [
-    // Row 0: 33321...
+    // Row 7: 33321...
     [
-      { color: 'blue', size: 3, orientation: 'UP' },
-      { color: 'blue', size: 3, orientation: 'UP' },
-      { color: 'blue', size: 3, orientation: 'UP' },
-      { color: 'blue', size: 2, orientation: 'UP' },
-      { color: 'blue', size: 1, orientation: 'UP' },
+      { color: "blue", size: 3, orientation: "UP" },
+      { color: "blue", size: 3, orientation: "UP" },
+      { color: "blue", size: 3, orientation: "UP" },
+      { color: "blue", size: 2, orientation: "UP" },
+      { color: "blue", size: 1, orientation: "UP" },
       {},
       {},
-      {}
+      {},
     ],
-    // Row 1: 3221....
+    // Row 6: 3221....
     [
-      { color: 'blue', size: 3, orientation: 'UP' },
-      { color: 'blue', size: 2, orientation: 'UP' },
-      { color: 'blue', size: 2, orientation: 'UP' },
-      { color: 'blue', size: 1, orientation: 'UP' },
+      { color: "blue", size: 3, orientation: "UP" },
+      { color: "blue", size: 2, orientation: "UP" },
+      { color: "blue", size: 2, orientation: "UP" },
+      { color: "blue", size: 1, orientation: "UP" },
       {},
       {},
       {},
-      {}
+      {},
     ],
-    // Row 2: 321.....
+    // Row 5: 321.....
     [
-      { color: 'blue', size: 3, orientation: 'UP' },
-      { color: 'blue', size: 2, orientation: 'UP' },
-      { color: 'blue', size: 1, orientation: 'UP' },
+      { color: "blue", size: 3, orientation: "UP" },
+      { color: "blue", size: 2, orientation: "UP" },
+      { color: "blue", size: 1, orientation: "UP" },
       {},
       {},
       {},
       {},
-      {}
+      {},
     ],
-    // Row 3: 21.....1
+    // Row 4: 21.....1
     [
-      { color: 'blue', size: 2, orientation: 'UP' },
-      { color: 'blue', size: 1, orientation: 'UP' },
+      { color: "blue", size: 2, orientation: "UP" },
+      { color: "blue", size: 1, orientation: "UP" },
       {},
       {},
       {},
       {},
       {},
-      { color: 'red', size: 1, orientation: 'UP' }
+      { color: "red", size: 1, orientation: "UP" },
     ],
-    // Row 4: 1.....12
+    // Row 3: 1.....12
     [
-      { color: 'blue', size: 1, orientation: 'UP' },
+      { color: "blue", size: 1, orientation: "UP" },
       {},
       {},
       {},
       {},
       {},
-      { color: 'red', size: 1, orientation: 'UP' },
-      { color: 'red', size: 2, orientation: 'UP' }
+      { color: "red", size: 1, orientation: "UP" },
+      { color: "red", size: 2, orientation: "UP" },
     ],
-    // Row 5: .....123
+    // Row 2: .....123
     [
       {},
       {},
       {},
       {},
       {},
-      { color: 'red', size: 1, orientation: 'UP' },
-      { color: 'red', size: 2, orientation: 'UP' },
-      { color: 'red', size: 3, orientation: 'UP' }
+      { color: "red", size: 1, orientation: "UP" },
+      { color: "red", size: 2, orientation: "UP" },
+      { color: "red", size: 3, orientation: "UP" },
     ],
-    // Row 6: ....1223
+    // Row 1: ....1223
     [
       {},
       {},
       {},
       {},
-      { color: 'red', size: 1, orientation: 'UP' },
-      { color: 'red', size: 2, orientation: 'UP' },
-      { color: 'red', size: 2, orientation: 'UP' },
-      { color: 'red', size: 3, orientation: 'UP' }
+      { color: "red", size: 1, orientation: "UP" },
+      { color: "red", size: 2, orientation: "UP" },
+      { color: "red", size: 2, orientation: "UP" },
+      { color: "red", size: 3, orientation: "UP" },
     ],
-    // Row 7: ...12333
+    // Row 0: ...12333
     [
       {},
       {},
       {},
-      { color: 'red', size: 1, orientation: 'UP' },
-      { color: 'red', size: 2, orientation: 'UP' },
-      { color: 'red', size: 3, orientation: 'UP' },
-      { color: 'red', size: 3, orientation: 'UP' },
-      { color: 'red', size: 3, orientation: 'UP' }
-    ]
-  ] as Board;
+      { color: "red", size: 1, orientation: "UP" },
+      { color: "red", size: 2, orientation: "UP" },
+      { color: "red", size: 3, orientation: "UP" },
+      { color: "red", size: 3, orientation: "UP" },
+      { color: "red", size: 3, orientation: "UP" },
+    ],
+  ].toReversed() as Board;
 }
 
 /**
@@ -117,10 +127,10 @@ export function initBoard(): Board {
  */
 export function placePyramid(
   board: Board,
-  [x, y]: Coords,
+  [column, row]: Coords,
   color: Color,
   size: Size,
   orientation: Orientation
 ): void {
-  board[x][y] = { color, size, orientation };
+  board[column][row] = { color, size, orientation };
 }
